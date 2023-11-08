@@ -17,7 +17,7 @@ class Auth():
             bool: _description_
         """
         if path is None:
-            return False
+            return True
 
     def authorization_header(self, request=None) -> str:
         if request is None:
