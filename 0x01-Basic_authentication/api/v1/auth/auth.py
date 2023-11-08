@@ -14,7 +14,7 @@ class Auth():
             excluded_paths (List[str]): _description_
 
         Returns:
-            bool: _description_
+            bool: True if path is not excluded
         """
         if path is None:
             return True
