@@ -34,3 +34,10 @@ def unAuthorized():
         e (_type_): _description_
     """
     abort(401, description="Unauthorized")
+
+
+@app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
+def forBidden():
+    """route to 403 error
+    """
+    abort(403, description='Forbidden')

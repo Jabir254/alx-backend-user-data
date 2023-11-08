@@ -35,7 +35,7 @@ def forbidden(error) -> str:
     Returns:
         str: jsonify
     """
-    return jsonify({"error": "Forbidden"})
+    return jsonify({"error":  "Forbidden"})
 
 
 if __name__ == "__main__":
