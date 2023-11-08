@@ -21,9 +21,22 @@ class Auth():
         return False
 
     def authorization_header(self, request=None) -> str:
+        """_summary_
+
+        Args:
+            request (_type_, optional): _description_. Defaults to None.
+
+        Returns:
+            str: _description_
+        """
         if request is None:
             return None
 
     def current_user(self, request=None) -> TypeVar('User'):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
         if request is None:
             return None
