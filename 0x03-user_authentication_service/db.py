@@ -4,6 +4,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
+from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError
 
 from user import Base, User
 
@@ -43,3 +45,22 @@ class DB:
         self._session.add(user)
         self._session.commit()
         return user
+
+    def find_usr_by(self, **kwargs) -> User:
+        """find users and return the first row
+
+        Raises:
+            InvalidRequestError: when no result if found
+            NoResultFound: wrong query arg are passed
+
+        Returns:
+            User: filtered table by methods 
+        """
+        users = self._session.query(User)
+        for k, v in kwargs.items():
+            if k not in User.__dict__:
+                raise InvalidRequestError
+            for usr in users:
+                if getattr(usr, k) == v:
+                    return usr
+        raise NoResultFound
